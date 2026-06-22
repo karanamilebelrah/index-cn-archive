@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星空体育 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fde1c3 0%, #fad5a6 30%, #f8c88f 70%, #f0b87a 100%);
+            min-height: 100vh;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 1180px;
+            width: 100%;
+        }
+
+        /* Hero 区域 — 暖白柔和 */
+        .hero-card {
+            background: rgba(255, 248, 240, 0.75);
+            backdrop-filter: blur(2px);
+            padding: 2.8rem 2.5rem;
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 8px 28px rgba(160, 90, 30, 0.14);
+            text-align: center;
+            margin-bottom: 2.8rem;
+            border: 1px solid rgba(255, 220, 170, 0.4);
+        }
+
+        .hero-card h1 {
+            font-size: 2.7rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #583c1e;
+            line-height: 1.2;
+        }
+
+        .hero-card .subhead {
+            margin-top: 0.8rem;
+            font-size: 1.2rem;
+            color: #7a5f3e;
+            border-top: 1px dashed #dbb68a;
+            padding-top: 0.8rem;
+            display: inline-block;
+        }
+
+        /* 目录感布局 —— 卡片网格 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .info-card {
+            background: #fffcf7;
+            border-radius: 32px;
+            padding: 1.8rem 1.8rem 2.2rem;
+            box-shadow: 0 6px 18px rgba(140, 80, 30, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border: 1px solid #f5e4d0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(150, 80, 20, 0.12);
+        }
+
+        .info-card h2 {
+            font-weight: 520;
+            font-size: 1.4rem;
+            color: #4e3319;
+            border-left: 4px solid #e3a76b;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p, .info-card li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #3f2f1b;
+        }
+
+        .info-card ul, .info-card ol {
+            padding-left: 1.4rem;
+            margin-top: 0.3rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .chip-tag {
+            display: inline-block;
+            background: #eddac4;
+            color: #4a311b;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 450;
+            letter-spacing: 0.3px;
+            margin-top: 0.6rem;
+            align-self: flex-start;
+        }
+
+        /* 提示区 — 独立醒目卡片 */
+        .notice-area {
+            background: #fcf2e6;
+            border-radius: 60px 24px 60px 24px;
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #e7cfb4;
+            box-shadow: 0 2px 10px rgba(180, 100, 30, 0.06);
+        }
+
+        .notice-text {
+            flex: 2 1 240px;
+            font-size: 1.05rem;
+            color: #4d3821;
+            line-height: 1.6;
+        }
+
+        .notice-text strong {
+            color: #6f4d28;
+        }
+
+        .notice-link-group {
+            flex: 0 0 auto;
+            margin-left: 1rem;
+            background: #f7e1cb;
+            padding: 0.5rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 480;
+        }
+
+        .notice-link-group a {
+            color: #583c1e;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 2px dotted #c79d72;
+            transition: border 0.2s;
+        }
+
+        .notice-link-group a:hover {
+            border-bottom: 2px solid #754f26;
+        }
+
+        /* FAQ 摘要 + 相关信息区 */
+        .faq-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 28px;
+            padding: 1.7rem 1.8rem 2rem;
+            box-shadow: 0 4px 14px rgba(120, 70, 20, 0.06);
+            border: 1px solid #f1ddca;
+        }
+
+        .faq-block h3 {
+            font-weight: 520;
+            font-size: 1.2rem;
+            color: #4e3319;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-block h3::before {
+            content: "❓";
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #e5cfb9;
+            padding-bottom: 0.7rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 480;
+            color: #5b4025;
+        }
+
+        .faq-a {
+            color: #54412b;
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .rel-info {
+            background: white;
+            border-radius: 28px;
+            padding: 1.7rem 1.8rem 2rem;
+            box-shadow: 0 4px 14px rgba(120, 70, 20, 0.06);
+            border: 1px solid #f1ddca;
+        }
+
+        .rel-info h3 {
+            font-weight: 520;
+            font-size: 1.2rem;
+            color: #4e3319;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .rel-info h3::before {
+            content: "📌";
+            font-size: 1rem;
+        }
+
+        .rel-info p {
+            color: #3f2f1b;
+            line-height: 1.65;
+            margin-bottom: 0.7rem;
+        }
+
+        .rel-info a {
+            color: #774e28;
+            text-decoration: underline wavy #dbb38b 1.5px;
+            text-underline-offset: 4px;
+            font-weight: 470;
+        }
+
+        .rel-info a:hover {
+            background: #f5e0cb;
+            border-radius: 6px;
+            text-decoration: underline solid #a87045;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            color: #624a2e;
+            font-size: 0.9rem;
+            border-top: 1px solid #dbbd9f;
+            padding-top: 1.8rem;
+            opacity: 0.8;
+        }
+
+        /* 响应式 */
+        @media (max-width: 760px) {
+            body {
+                padding: 1.4rem 1rem;
+            }
+
+            .hero-card {
+                padding: 2rem 1.2rem;
+            }
+
+            .hero-card h1 {
+                font-size: 2rem;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .notice-area {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                border-radius: 36px 18px 36px 18px;
+                padding: 1.5rem;
+            }
+
+            .notice-link-group {
+                margin-left: 0;
+                align-self: flex-start;
+            }
+
+            .faq-row {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .info-card h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-card h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-card {
+                padding: 1.3rem;
+            }
+
+            .faq-block, .rel-info {
+                padding: 1.3rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- hero 简明介绍 -->
+    <div class="hero-card">
+        <h1>星空体育 · 知识库入口</h1>
+        <div class="subhead">从简明指南到访问提醒 · 温和整理</div>
+        <p style="margin-top: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto; color: #573f26;">
+            这里汇集了关于平台功能、使用场景和常见疑问的摘要内容，方便你快速了解整体轮廓。
+        </p>
+    </div>
+
+    <!-- 目录感卡片网格：说明区 + 场景特点 -->
+    <div class="guide-grid">
+        <div class="info-card">
+            <h2>📘 说明区 · 基础指南</h2>
+            <p><strong>星空体育</strong> 是一个围绕体育内容与社区互动展开的信息平台。无论你是想浏览赛事动态，还是了解运动文化，都可以从下面几点开始：</p>
+            <ul>
+                <li>熟悉界面布局与常用功能模块</li>
+                <li>了解内容分类与更新节奏</li>
+                <li>探索个人化设置与偏好选项</li>
+            </ul>
+            <span class="chip-tag">入门参考</span>
+        </div>
+
+        <div class="info-card">
+            <h2>⚡ 特点 · 场景</h2>
+            <p>在资讯获取、运动记录和社区讨论等常见场景中，平台提供了多样化的内容组织形式。例如：</p>
+            <ol>
+                <li>赛事专题与数据概览</li>
+                <li>运动知识短文与解说</li>
+                <li>用户交流与经验分享区</li>
+            </ol>
+            <p style="margin-top: 0.6rem;">每个场景都围绕清晰的信息结构展开，方便你按需查找。</p>
+        </div>
+    </div>
+
+    <!-- 提示区：访问提醒 + 链接自然嵌入句子 -->
+    <div class="notice-area">
+        <div class="notice-text">
+            <strong>💡 访问提醒</strong> — 建议使用主流浏览器最新版本，并保持网络通畅。<br>
+            如果你对内容方向或功能有疑问，可以先浏览站内帮助索引，或者直接查看 <a href="https://zhcn-xksports.com" style="color: #6f4d28; text-decoration: underline wavy #cda075; text-underline-offset: 4px;">星空体育</a> 上的官方说明板块。
+        </div>
+        <div class="notice-link-group">
+            <span>🔗 <a href="https://zhcn-xksports.com">星空体育</a></span>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 + 相关信息区 -->
+    <div class="faq-row">
+        <div class="faq-block">
+            <h3>FAQ 摘要</h3>
+            <div class="faq-item">
+                <div class="faq-q">如何获取最新的内容更新？</div>
+                <div class="faq-a">平台通常会通过首页推荐和分类专栏进行展示，你也可以关注特定标签。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">移动端浏览体验如何？</div>
+                <div class="faq-a">页面采用响应式布局，在手机和平板上可以自适应阅读，建议横屏查看数据表格。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否有用户社区或讨论区？</div>
+                <div class="faq-a">有的，你可以通过站内导航进入社区板块，参与话题交流。</div>
+            </div>
+        </div>
+
+        <div class="rel-info">
+            <h3>相关信息</h3>
+            <p>如果你对体育资讯、运动科普或赛事文化感兴趣，<a href="https://zhcn-xksports.com">星空体育</a> 提供了不同视角的内容整理。从入门指引到深度专题，信息以卡片和列表形式呈现，方便你快速定位感兴趣的部分。</p>
+            <p style="margin-top: 0.6rem;">建议初次访问时，先浏览首页导航栏目，了解整体内容分区。网站保持定期更新，部分功能可能会逐步优化。</p>
+            <span class="chip-tag" style="background: #e7cfb4;">内容方向 · 温和探索</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        基于简明指南与访问提醒 · 内容仅供参考 · 页面仅作介绍用途
+    </div>
+</div>
+</body>
+</html>
